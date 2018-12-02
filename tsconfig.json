@@ -16,6 +16,12 @@
     ],
     "baseUrl": ".",
     "paths": {
+      "@playground/core": [
+        "libs/core/src/index.ts"
+      ],
+      "@playground/services": [
+        "libs/services/src/index.ts"
+      ]
     }
   },
   "exclude": [
