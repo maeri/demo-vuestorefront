@@ -13,7 +13,7 @@ Please design and mockup the component structure for the eCommerce frontend that
 
 ## Which components should this page consist of? 
 
-HeaderContainer : smart cmp holding page traversal, state containers (wishlist and shopping), authentication cmp and 
+- HeaderContainer : smart cmp holding page traversal, state containers (wishlist and shopping), authentication cmp and 
 
     - PageTraversalContainer: 
 	-	GoBackComponent
@@ -26,7 +26,7 @@ HeaderContainer : smart cmp holding page traversal, state containers (wishlist a
 	-	AuthenticationComponent
 	- 	SearchComponent
 
-ProductDetailsContainer: smart cmp managing product details and operations on it 
+- ProductDetailsContainer: smart cmp managing product details and operations on it 
 	-	ProductImageComponent
 	-	BreadCrumbComponent: routing to other categories
 	-	ProductPropertiesComponent: id, price, color, size, quantity
@@ -34,16 +34,16 @@ ProductDetailsContainer: smart cmp managing product details and operations on it
 	-	AddToFavoriteComponent : presentational cmp for adding product to favorite list
 	-	AddToCompareComponent : presentational cmp for adding product for comparison
 
-ProductDescriptionComponent
+- ProductDescriptionComponent
 
-ReviewContainer
+- ReviewContainer
 	-	ReviewDescriptionComponent	
 	-	AddToReviewComponent
 
-ProductListComponent
+- ProductListComponent
 
-SubscribeComponent
-FooterComponent
+- SubscribeComponent
+- FooterComponent
 
 ## How to maintain the core/theme separation? 
 
