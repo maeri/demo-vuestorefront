@@ -2,5 +2,8 @@
   Add to Base component
 </p>
 <li *ngFor="let product of (products$ | async)">
-  {{product.name}}&nbsp;<span><button (click)="selectProduct(product)">Add to shooping cart</button></span>
+  {{product.name}}&nbsp;
+    <span>
+        <button (click)="selectProduct(product)">Add to shooping cart</button>
+    </span>
 </li>&nbsp;

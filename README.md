@@ -4,41 +4,56 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Nrwl Extensions for Angular (Nx)
 
-<a href="https://nrwl.io/nx"><img src="https://preview.ibb.co/mW6sdw/nx_logo.png"></a>
+Please design and mockup the component structure for the eCommerce frontend that will be easy to extend and customise while keeping the core code update-able, DRY and SRP compliant.For this test task let's design the component structure of the Product Page (mockup:https://demo.vuestorefront.io/p/WS12/radiant-tee-1561/WS12). 
 
-Nx is an open source toolkit for enterprise Angular applications.
+## Acceptance criteria:
 
-Nx is designed to help you create and build enterprise grade Angular applications. It provides an opinionated approach to application project structure and patterns.
+- user can extend/use the core components (AddToCart, Product ...) in it's own themes to create it's own markup + styles while keeping the business logic in the core
+- the core components can be updated any time with new release of the base framework.
 
-## Quick Start & Documentation
+## Which components should this page consist of? 
 
-[Watch a 5-minute video on how to get started with Nx.](http://nrwl.io/nx)
+HeaderContainer : smart cmp holding page traversal, state containers (wishlist and shopping), authentication cmp and 
 
-## Generate your first application
+    - PageTraversalContainer: 
+	-	GoBackComponent
+	-	GoHomeComponent
 
-Run `ng generate app myapp` to generate an application. When using Nx, you can create multiple applications and libraries in the same CLI workspace. Read more [here](http://nrwl.io/nx).
+    ProductShoppingContainer: smart cmp to present actual state of products in shopping and wishlist baskets 
+	-	WishListComponent
+	-	ShoppingComponent
 
-## Development server
+	-	AuthenticationComponent
+	- 	SearchComponent
 
-Run `ng serve --project=myapp` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+ProductDetailsContainer: smart cmp managing product details and operations on it 
+	-	ProductImageComponent
+	-	BreadCrumbComponent: routing to other categories
+	-	ProductPropertiesComponent: id, price, color, size, quantity
+	-	AddToShoppingComponent : presentational cmp for adding product to shopping basket
+	-	AddToFavoriteComponent : presentational cmp for adding product to favorite list
+	-	AddToCompareComponent : presentational cmp for adding product for comparison
 
-## Code scaffolding
+ProductDescriptionComponent
 
-Run `ng generate component component-name --project=myapp` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+ReviewContainer
+	-	ReviewDescriptionComponent	
+	-	AddToReviewComponent
 
-## Build
+ProductListComponent
 
-Run `ng build --project=myapp` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+SubscribeComponent
+FooterComponent
 
-## Running unit tests
+## How to maintain the core/theme separation? 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+AddTo... cmps in application can extend from AddToBase cmp that is derived from project's library. Within AddToBase cmp CoreService is injected (again from different library) to maintain separation of responsibilities. 
 
-## Running end-to-end tests
+Whenever AddTo... is about to proceeed with bussiness login operation, it calls derived methods from AddToBase cmp that shifts this logic to service layer.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+To maintain theme separation child cmps can overwrite parent theme by using 'styleUrls' annotation.
 
-## Further help
+To allow consumers (child cmps) to extend / re-use components, they can benefit from using content projection.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+If core components has data passed from base framework and base framework delegates it's logic to bussiness / service layer, then if bussiness layer rely Observables , data will be pushed to them.
+If business 

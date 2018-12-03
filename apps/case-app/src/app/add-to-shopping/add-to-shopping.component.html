@@ -3,5 +3,12 @@
 </p>
 
 <li *ngFor="let product of (products$ | async)">
-  {{product.name}}&nbsp;<span><button (click)="selectProduct(product)">Add to shooping cart</button></span>
+  {{product.name}}&nbsp;
+  <span>
+    <button (click)="selectProduct(product)">Add to shooping cart</button>
+    <button (click)="calculateProductPrice(product)">Calculate price</button>
+  </span>&nbsp;
+  <p>After reduction</p>
+  {{product.price | currency}}
+  &nbsp;
 </li>&nbsp;
